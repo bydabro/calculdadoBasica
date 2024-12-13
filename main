@@ -1,0 +1,22 @@
+import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.List;
+
+public class calculadora {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        List<double> numeros = new ArrayList<>();
+        String input;
+
+        // Ingreso de los numeros
+        while (true) {
+            System.out.println("Introduce los numeros:");
+            input = sc.nextLine();
+
+            // Si el input esta vacio salimos del bucle
+            if (input.isEmpty()) { 
+                break;
+            }
+        }
+    }
+}
