@@ -5,7 +5,7 @@ import java.util.List;
 public class calculadora {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        List<double> numeros = new ArrayList<>();
+        List<Double> numeros = new ArrayList<>();
         String input;
 
         // Ingreso de los numeros
@@ -17,6 +17,54 @@ public class calculadora {
             if (input.isEmpty()) { 
                 break;
             }
+
+            try {
+                double numero = Double.parseDouble(input);
+                numeros.add(numero);
+            } catch (NumberFormatException e) {
+                System.out.println("Ingresa un número válido:");
+            }
         }
+
+        // si no se ingresaron numeros terminamos
+        if (numeros.isEmpty()) {
+            System.out.println("No se ingresaro numeros.");
+            return;
+        }
+        // mostrar los numeros ingresados
+        System.out.println("Los numeros ingresados son: " +numeros);
+
+        // elegir la operación
+        System.out.print("Elige una operación (+, -, *, /): ");
+        String operacion = sc.nextLine();
+
+        double resultado = numeros.get(0);
+
+        for (int i = 1; i < numeros.size(); i++) {
+            switch (operacion) {
+                case "+":
+                    resultado += numeros.get(i);
+                    break;
+                case "-":
+                    resultado -= numeros.get(i);
+                    break;
+                case "*":
+                    resultado *= numeros.get(i);
+                    break;
+                case "/":
+                    if (numeros.get(i) != 0 ) {
+                        resultado /= numeros.get(i);
+                    } else {
+                        System.out.println("Error.");
+                        return;
+                    }
+                    break;
+                default:
+                System.out.println("Operación no válida.");
+                    return;
+            }
+        }
+
+        System.out.println("El resultado es: " +resultado);
     }
 }
